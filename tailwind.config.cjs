@@ -10,7 +10,7 @@ module.exports = {
         'accent-blue' : '#325cd5',
       },
       fontFamily: {
-        'firacode' : ['Firacode', 'monospace'],
+        'firacode' : ['Fira Code', 'monospace'],
         'inter': ['Inter', 'sans-serif']
       }
     },
