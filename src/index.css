@@ -4,7 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -14,7 +14,7 @@
 
   /* color-scheme: light dark; */
   /* color: rgba(255, 255, 255, 0.87); */
-  background-color: #ebf0ff;
+  background-color: #fff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
