@@ -11,7 +11,6 @@ module.exports = {
       },
       fontFamily: {
         'firacode' : ['Fira Code', 'monospace'],
-        'inter': ['Inter', 'sans-serif']
       }
     },
   },
