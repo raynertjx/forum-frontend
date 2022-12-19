@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { IoLogoOctocat } from "react-icons/io";
+import { useAppSelector } from "../../hooks/hooks";
+import Services from "../../services/Services";
 
 const Header: React.FC = () => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
     const mobileMenuHandler = (event: React.MouseEvent) => {
-        setShowMobileMenu(prevState => !prevState);
+        setShowMobileMenu((prevState) => !prevState);
     };
+    const navigate = useNavigate();
+
+    const logoutHandler = (event: React.MouseEvent) => {
+        Services.logout();
+        navigate(0);
+    };
+
+    const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
+    const username = useAppSelector((state) => state.auth.username);
 
     return (
         <nav className="bg-gray-100 text-xl">
@@ -33,12 +45,18 @@ const Header: React.FC = () => {
                         </div>
                     </div>
                     <div className="hidden lg:flex  items-center space-x-1 font-medium">
-                        <NavLink
-                            className="py-5 px-1 text-gray-700 hover:text-gray-500"
-                            to="/login"
-                        >
-                            Login
-                        </NavLink>
+                        {isLoggedIn && <div>Welcome {username}</div>}
+                        {!isLoggedIn && (
+                            <NavLink
+                                className="py-5 px-1 text-gray-700 hover:text-gray-500"
+                                to="/login"
+                            >
+                                Login
+                            </NavLink>
+                        )}
+                        {isLoggedIn && (
+                            <button onClick={logoutHandler}>Log Out</button>
+                        )}
                     </div>
                     <div className="lg:hidden flex items-center">
                         <button onClick={mobileMenuHandler}>
@@ -60,7 +78,11 @@ const Header: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className={`lg:hidden ${showMobileMenu ? 'block' : 'hidden'} z-20 absolute bg-gray-100 w-full`}>
+            <div
+                className={`lg:hidden ${
+                    showMobileMenu ? "block" : "hidden"
+                } z-20 absolute bg-gray-100 w-full`}
+            >
                 <NavLink
                     className="block py-3 px-8 font-medium hover:bg-gray-200"
                     to="/forum"
