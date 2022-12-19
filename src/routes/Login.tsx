@@ -1,7 +1,8 @@
 import React from "react";
+import LoginForm from "../components/authentication/LoginForm";
 
 const Login: React.FC = () => {
-    return <div>Login</div>;
+    return <LoginForm />
 };
 
 export default Login;
