@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
+import { authActions } from "../../store/auth-slice";
+import { useAppDispatch } from "../../hooks/hooks";
 import { IoLogoOctocat } from "react-icons/io";
 import { useAppSelector } from "../../hooks/hooks";
 import Services from "../../services/Services";
@@ -11,10 +12,13 @@ const Header: React.FC = () => {
         setShowMobileMenu((prevState) => !prevState);
     };
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
-    const logoutHandler = (event: React.MouseEvent) => {
-        Services.logout();
-        navigate(0);
+    const logoutHandler = async (event: React.MouseEvent) => {
+        await Services.logout().then((res) => {
+            dispatch(authActions.logout());
+            navigate("/forum");
+        });
     };
 
     const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
