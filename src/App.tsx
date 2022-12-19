@@ -14,7 +14,7 @@ function App() {
 
     useEffect(() => {
         const fetchCookie = async () => {
-            await Services.authenticate()
+            await Services.whoami()
                 .then((res) => {
                     const data = res.data;
                     dispatch(

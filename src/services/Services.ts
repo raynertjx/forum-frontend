@@ -16,8 +16,8 @@ const Services = {
     logout: () => {
         return Api().post("logout");
     },
-    authenticate: () => {
-        return Api().get("authenticate");
+    whoami: () => {
+        return Api().get("whoami");
     },
     get_threads: () => {
         return Api().get("forum_threads");
