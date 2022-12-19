@@ -13,12 +13,15 @@ const Services = {
     }) => {
         return Api().post("signup", params);
     },
+    logout: () => {
+        return Api().post("logout");
+    },
     authenticate: () => {
         return Api().get("authenticate");
     },
     get_threads: () => {
-        return Api().get("forum_threads")
-    }
+        return Api().get("forum_threads");
+    },
 };
 
 export default Services;
