@@ -10,6 +10,7 @@ const Services = {
     signup: (params: {
         username: string | undefined;
         password: string | undefined;
+        password_confirmation: string | undefined;
     }) => {
         return Api().post("signup", params);
     },
