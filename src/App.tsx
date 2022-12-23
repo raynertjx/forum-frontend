@@ -7,6 +7,7 @@ import Layout from "./components/layout/Layout";
 import About from "./routes/About";
 import Forum from "./routes/Forum";
 import Login from "./routes/Login";
+import Signup from "./routes/Signup";
 import Subforum from "./routes/Subforum";
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/forum/:forumId" element={<Subforum />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />}></Route>
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </Layout>
