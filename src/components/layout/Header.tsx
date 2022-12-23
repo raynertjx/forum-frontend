@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { authActions } from "../../store/auth-slice";
-import { useAppDispatch } from "../../hooks/hooks";
 import { IoLogoOctocat } from "react-icons/io";
-import { useAppSelector } from "../../hooks/hooks";
+import { useAppDispatch } from "../../helpers/hooks";
+import { useAppSelector } from "../../helpers/hooks";
 import Services from "../../services/Services";
 
 const Header: React.FC = () => {
