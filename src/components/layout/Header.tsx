@@ -58,6 +58,14 @@ const Header: React.FC = () => {
                                 Login
                             </NavLink>
                         )}
+                        {!isLoggedIn && (
+                            <NavLink
+                                className="py-5 px-1 text-gray-700 hover:text-gray-500"
+                                to="/signup"
+                            >
+                                Sign Up
+                            </NavLink>
+                        )}
                         {isLoggedIn && (
                             <button onClick={logoutHandler}>Log Out</button>
                         )}
