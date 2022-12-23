@@ -1,9 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface threadStateObj {
-    title: string;
-    content: string;
     category: string;
+    content: string;
+    created_at: string;
+    id: number;
+    title: string;
+    updated_at: string;
+    user_id: number;
+    username: string;
 }
 
 const initialState: threadStateObj[] = [];
@@ -13,7 +18,10 @@ const threadSlice = createSlice({
     initialState,
     reducers: {
         getAllThreads(state, action) {
-            state.push(action.payload);
+            return [...state, ...action.payload];
+        },
+        removeAllThreads() {
+            return [];
         },
     },
 });
