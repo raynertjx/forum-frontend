@@ -1,7 +1,7 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import Services from "./services/Services";
-import { useAppDispatch } from "./hooks/hooks";
+import { useAppDispatch } from "./helpers/hooks";
 import { authActions } from "./store/auth-slice";
 import Layout from "./components/layout/Layout";
 import About from "./routes/About";
