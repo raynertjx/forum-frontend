@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import Services from "../../services/Services";
-import { useAppDispatch } from "../../helpers/hooks";
-import { authActions } from "../../store/auth-slice";
+import { useAppDispatch } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
 
 const SignupForm: React.FC = () => {
@@ -20,14 +19,6 @@ const SignupForm: React.FC = () => {
             password_confirmation: confirmPasswordInput.current?.value,
         })
             .then((res) => {
-                console.log(res);
-                const data = res.data.user;
-                // dispatch(
-                //     authActions.signup({
-                //         user_id: data.id,
-                //         username: data.username,
-                //     })
-                // );
                 navigate("/login");
             })
             .catch((error) => {
