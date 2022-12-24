@@ -1,6 +1,6 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useEffect } from "react";
-import Services from "./services/Services";
+import { authServices } from "./services/Services";
 import { useAppDispatch } from "./helpers/hooks";
 import { authActions } from "./store/auth-slice";
 import Layout from "./components/layout/Layout";
@@ -17,7 +17,7 @@ function App() {
 
     useEffect(() => {
         const fetchCookie = async () => {
-            await Services.whoami()
+            await authServices.whoami()
                 .then((res) => {
                     const data = res.data;
                     dispatch(
