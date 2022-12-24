@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useAppDispatch } from "../helpers/hooks";
+import { useAppDispatch } from "../hooks/hooks";
 import { threadActions } from "../store/thread-slice";
 import Title from "../components/UI/Title";
 import SubforumContainer from "../components/subforum/SubforumContainer";
@@ -9,7 +9,7 @@ import Services from "../services/Services";
 
 const Subforum: React.FC = () => {
     const { forumId } = useParams() as { forumId: string };
-    const temp = FORUM_CATEGORIES[forumId];
+    const forumCategory = FORUM_CATEGORIES[forumId];
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const Subforum: React.FC = () => {
 
     return (
         <>
-            <Title title={temp.title} desc={temp.subtitle} />
+            <Title title={forumCategory.title} desc={forumCategory.subtitle} />
             <SubforumContainer />
         </>
     );
