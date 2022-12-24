@@ -4,7 +4,7 @@ import { authActions } from "../../store/auth-slice";
 import { IoLogoOctocat } from "react-icons/io";
 import { useAppDispatch } from "../../helpers/hooks";
 import { useAppSelector } from "../../helpers/hooks";
-import Services from "../../services/Services";
+import { authServices } from "../../services/Services";
 
 const Header: React.FC = () => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -15,7 +15,7 @@ const Header: React.FC = () => {
     const dispatch = useAppDispatch();
 
     const logoutHandler = async (event: React.MouseEvent) => {
-        await Services.logout().then((res) => {
+        await authServices.logout().then((res) => {
             dispatch(authActions.logout());
             navigate("/forum");
         });
