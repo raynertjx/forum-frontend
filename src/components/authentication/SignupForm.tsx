@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Services from "../../services/Services";
+import { authServices } from "../../services/Services";
 import { useAppDispatch } from "../../helpers/hooks";
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +13,7 @@ const SignupForm: React.FC = () => {
     const confirmPasswordInput = useRef<HTMLInputElement | null>(null);
     const formSubmitHandler = async (event: React.FormEvent) => {
         event.preventDefault();
-        await Services.signup({
+        await authServices.signup({
             username: usernameInput.current?.value,
             password: passwordInput.current?.value,
             password_confirmation: confirmPasswordInput.current?.value,
