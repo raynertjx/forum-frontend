@@ -1,5 +1,6 @@
 export type ThreadType = {
-    title: string,
-    author: string
-    created_at: string
-}
+    title: string;
+    author: string;
+    category: string;
+    created_at: string;
+};
