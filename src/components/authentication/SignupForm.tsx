@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import Services from "../../services/Services";
-import { useAppDispatch } from "../../hooks/hooks";
+import { useAppDispatch } from "../../helpers/hooks";
 import { useNavigate } from "react-router-dom";
 
 const SignupForm: React.FC = () => {

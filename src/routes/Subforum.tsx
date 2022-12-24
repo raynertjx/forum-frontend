@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useAppDispatch } from "../hooks/hooks";
+import { useAppDispatch } from "../helpers/hooks";
 import { threadActions } from "../store/thread-slice";
 import Title from "../components/UI/Title";
 import SubforumContainer from "../components/subforum/SubforumContainer";
