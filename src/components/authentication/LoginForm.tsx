@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import Services from "../../services/Services";
-import { useAppDispatch } from "../../helpers/hooks";
+import { useAppDispatch } from "../../hooks/hooks";
 import { authActions } from "../../store/auth-slice";
 import { useNavigate } from "react-router-dom";
 
