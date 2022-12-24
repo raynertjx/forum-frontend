@@ -1,6 +1,6 @@
 import Api from "./Api";
 
-const Services = {
+export const authServices = {
     login: (params: {
         username: string | undefined;
         password: string | undefined;
@@ -20,9 +20,10 @@ const Services = {
     whoami: () => {
         return Api().get("whoami");
     },
+};
+
+export const threadServices = {
     get_threads: () => {
         return Api().get("forum_threads");
     },
 };
-
-export default Services;
