@@ -5,7 +5,7 @@ import Title from "../components/UI/Title";
 import SubforumContainer from "../components/subforum/SubforumContainer";
 import { FORUM_CATEGORIES } from "../components/forum/Forum.constants";
 import { useParams } from "react-router-dom";
-import { authServices } from "../services/Services";
+import { threadServices } from "../services/Services";
 
 const Subforum: React.FC = () => {
     const { forumId } = useParams() as { forumId: string };
@@ -15,7 +15,7 @@ const Subforum: React.FC = () => {
     useEffect(() => {
         dispatch(threadActions.removeAllThreads());
         const fetchThreads = async () => {
-            await authServices.get_threads().then((res) => {
+            await threadServices.get_threads().then((res) => {
                 dispatch(threadActions.getAllThreads(res.data));
             });
         };
