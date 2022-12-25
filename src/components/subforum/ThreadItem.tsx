@@ -11,7 +11,7 @@ const ThreadItem: React.FC<{ url: string } & ThreadType> = (props) => {
                 <div className="col-span-2">
                     <NavLink
                         className="font-semibold text-lg"
-                        to={`/forum/${props.url}`}
+                        to={`/forum/${props.category}/${props.url}`}
                     >
                         {props.title}
                     </NavLink>
