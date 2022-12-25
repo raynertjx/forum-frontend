@@ -26,4 +26,7 @@ export const threadServices = {
     get_threads: () => {
         return Api().get("forum_threads");
     },
+    create_thread: () => {
+        return Api().post("forum_threads");
+    },
 };
