@@ -26,7 +26,11 @@ export const threadServices = {
     get_threads: () => {
         return Api().get("forum_threads");
     },
-    create_thread: () => {
-        return Api().post("forum_threads");
+    create_thread: (params: {
+        title: string | undefined;
+        content: string | undefined;
+        category: string | undefined;
+    }) => {
+        return Api().post("forum_threads", params);
     },
 };
