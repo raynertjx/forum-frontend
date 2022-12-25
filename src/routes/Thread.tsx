@@ -1,17 +1,17 @@
 import React from "react";
-import { useAppSelector } from "../helpers/hooks";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Thread: React.FC = () => {
-    const { threadId } = useParams() as { threadId: string };
-    const currentThreadId = Number(
-        threadId.substring(0, threadId.indexOf("-"))
-    );
-    const currentThread = useAppSelector((state) => state.threads).find(
-        (item) => item.id === currentThreadId
-    );
+    const location = useLocation();
+    const { state } = location;
+    const { title, content } = state;
 
-    return <div>{currentThread?.content}</div>;
+    return (
+        <>
+            <h1>{title}</h1>
+            <div>{content}</div>
+        </>
+    );
 };
 
 export default Thread;
