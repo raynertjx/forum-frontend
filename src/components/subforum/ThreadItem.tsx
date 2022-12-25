@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { ThreadType } from "./Thread.types";
 import { formatDate } from "../../helpers/helpers";
 
-const ThreadItem: React.FC<{ url: string } & ThreadType> = (props) => {
+const ThreadItem: React.FC<ThreadType> = (props: ThreadType) => {
     return (
         <div className="grid lg:grid-cols-10 px-4 py-4">
             <div className="col-span-6 grid grid-cols-3 lg:flex gap-4">
@@ -12,6 +12,11 @@ const ThreadItem: React.FC<{ url: string } & ThreadType> = (props) => {
                     <NavLink
                         className="font-semibold text-lg"
                         to={`/forum/${props.category}/${props.url}`}
+                        state={{
+                            id: props.id,
+                            title: props.title,
+                            content: props.content,
+                        }}
                     >
                         {props.title}
                     </NavLink>
