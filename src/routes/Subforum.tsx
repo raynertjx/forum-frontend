@@ -25,7 +25,7 @@ const Subforum: React.FC = () => {
     return (
         <>
             <Title title={forumCategory.title} desc={forumCategory.subtitle} />
-            <SubforumContainer />
+            <SubforumContainer category={forumId}/>
         </>
     );
 };
