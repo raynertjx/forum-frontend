@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 const Thread: React.FC = () => {
     const location = useLocation();
     const { state } = location;
-    const { title, content } = state;
+    const { user_id, title, content } = state;
 
     return (
         <>
