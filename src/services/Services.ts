@@ -33,4 +33,20 @@ export const threadServices = {
     }) => {
         return Api().post("forum_threads", params);
     },
+    update_thread: (params: {
+        title: string | undefined;
+        content: string | undefined;
+        category: string | undefined;
+        thread_id: string | undefined;
+    }) => {
+        const { thread_id, ...newParams } = params;
+        return Api().patch(`forum_threads/${thread_id}`, newParams);
+    },
+    delete_thread: (params: {
+        thread_id: string | undefined;
+    }) => {
+        const { thread_id } = params;
+        return Api().delete(`forum_threads/${thread_id}`);
+    },
+
 };
