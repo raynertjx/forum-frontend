@@ -4,7 +4,7 @@ import Taskbar from "../UI/Taskbar";
 import ThreadItem from "./ThreadItem";
 import { formatUrl } from "../../helpers/helpers";
 import { useAppSelector } from "../../helpers/hooks";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 type Prop = { category: string };
 
@@ -17,13 +17,13 @@ const SubforumContainer: React.FC<Prop> = (props: Prop) => {
     return (
         <Container>
             <div className="bg-white flex justify-end pb-3">
-                {isLoggedIn && <NavLink
+                {isLoggedIn && <Link
                     to="new"
                     className="bg-blue-400 px-3 py-1"
                     state={{ category: props.category }}
                 >
                     New Thread
-                </NavLink>}
+                </Link>}
             </div>
             <Taskbar
                 headers={["Thread", "Latest Comment", "Comments", "Views"]}
@@ -36,6 +36,7 @@ const SubforumContainer: React.FC<Prop> = (props: Prop) => {
                         title={thread.title}
                         content={thread.content}
                         author={thread.username}
+                        author_id={thread.user_id}
                         category={thread.category}
                         created_at={thread.created_at}
                     />
