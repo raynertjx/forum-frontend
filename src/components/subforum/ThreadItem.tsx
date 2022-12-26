@@ -13,7 +13,8 @@ const ThreadItem: React.FC<ThreadType> = (props: ThreadType) => {
                         className="font-semibold text-lg"
                         to={`/forum/${props.category}/${props.url}`}
                         state={{
-                            id: props.id,
+                            thread_id: props.id,
+                            user_id: props.author_id,
                             title: props.title,
                             content: props.content,
                         }}
