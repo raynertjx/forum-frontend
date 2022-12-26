@@ -10,14 +10,16 @@ import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import Subforum from "./routes/Subforum";
 import Thread from "./routes/Thread";
-import ThreadForm from "./components/crud-forms/ThreadForm";
+import CreateThread from "./components/crud-forms/CreateThread";
+import UpdateThread from "./components/crud-forms/UpdateThread";
 
 function App() {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         const fetchCookie = async () => {
-            await authServices.whoami()
+            await authServices
+                .whoami()
                 .then((res) => {
                     const data = res.data;
                     dispatch(
@@ -45,8 +47,9 @@ function App() {
                 <Route path="/forum">
                     <Route index element={<Forum />} />
                     <Route path=":forumId" element={<Subforum />} />
-                    <Route path=":forumId/new" element={<ThreadForm />} />
+                    <Route path=":forumId/new" element={<CreateThread />} />
                     <Route path=":forumId/:threadId" element={<Thread />} />
+                    <Route path=":forumId/:threadId/edit" element={<UpdateThread />} />
                 </Route>
                 <Route path="*" element={<Navigate to="/forum" replace />} />
             </Routes>
