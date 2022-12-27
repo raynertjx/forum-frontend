@@ -12,6 +12,7 @@ import Subforum from "./routes/Subforum";
 import Thread from "./routes/Thread";
 import CreateThread from "./components/crud-forms/CreateThread";
 import UpdateThread from "./components/crud-forms/UpdateThread";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
     const dispatch = useAppDispatch();
@@ -47,9 +48,14 @@ function App() {
                 <Route path="/forum">
                     <Route index element={<Forum />} />
                     <Route path=":forumId" element={<Subforum />} />
-                    <Route path=":forumId/new" element={<CreateThread />} />
                     <Route path=":forumId/:threadId" element={<Thread />} />
-                    <Route path=":forumId/:threadId/edit" element={<UpdateThread />} />
+                    <Route element={<ProtectedRoute />}>
+                        <Route path=":forumId/new" element={<CreateThread />} />
+                        <Route
+                            path=":forumId/:threadId/edit"
+                            element={<UpdateThread />}
+                        />
+                    </Route>
                 </Route>
                 <Route path="*" element={<Navigate to="/forum" replace />} />
             </Routes>
