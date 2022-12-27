@@ -10,8 +10,13 @@ type Prop = { category: string };
 
 const SubforumContainer: React.FC<Prop> = (props: Prop) => {
     const allThreads = useAppSelector((state) =>
-        state.threads.filter((thread) => thread.category === props.category)
+        state.threads.filter((thread) => thread.category === props.category).sort((a, b) => {
+            const dateA = new Date(a.updated_at)
+            const dateB = new Date(b.updated_at);
+            return dateA > dateB ? -1 : 1;
+        })
     );
+    console.log(allThreads);
     const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
 
     return (
