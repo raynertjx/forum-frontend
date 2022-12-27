@@ -7,6 +7,7 @@ const ForumCategories: React.FC = () => {
         <div className="flex flex-col">
             {Object.entries(FORUM_CATEGORIES).map(([key, value]) => (
                 <ForumCategoryItem
+                    key={key}
                     url={key}
                     title={value.title}
                     subtitle={value.subtitle}

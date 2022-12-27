@@ -31,6 +31,7 @@ const SubforumContainer: React.FC<Prop> = (props: Prop) => {
             <div className="flex flex-col">
                 {allThreads.map((thread) => (
                     <ThreadItem
+                        key={thread.id}
                         id={thread.id}
                         url={formatUrl(thread.id, thread.title)}
                         title={thread.title}
