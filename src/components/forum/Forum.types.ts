@@ -4,5 +4,4 @@ export type ForumCategory = {
     image: string;
     latest: string;
     threads: number;
-    comments: number;
 }
