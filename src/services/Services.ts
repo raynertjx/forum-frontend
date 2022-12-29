@@ -26,6 +26,9 @@ export const threadServices = {
     get_threads: () => {
         return Api().get("forum_threads");
     },
+    get_threads_from_cat: (category: string) => {
+        return Api().get(`index_category/${category}`);
+    },
     create_thread: (params: {
         title: string | undefined;
         content: string | undefined;
@@ -42,11 +45,8 @@ export const threadServices = {
         const { thread_id, ...newParams } = params;
         return Api().patch(`forum_threads/${thread_id}`, newParams);
     },
-    delete_thread: (params: {
-        thread_id: string | undefined;
-    }) => {
+    delete_thread: (params: { thread_id: string | undefined }) => {
         const { thread_id } = params;
         return Api().delete(`forum_threads/${thread_id}`);
     },
-
 };
