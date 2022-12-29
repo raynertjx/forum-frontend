@@ -22,17 +22,31 @@ export const authServices = {
     },
 };
 
+export const categoryServices = {
+    get_categories: () => {
+        return Api().get("forum_categories");
+    },
+    update_category: (params: {
+        id: number | undefined;
+        latest_thread: string | undefined;
+        thread_count: number | undefined;
+    }) => {
+        const { id } = params;
+        return Api().patch(`forum_categories/${id}`, params);
+    },
+};
+
 export const threadServices = {
     get_threads: () => {
         return Api().get("forum_threads");
     },
-    get_threads_from_cat: (category: string) => {
-        return Api().get(`index_category/${category}`);
+    get_threads_from_cat: (forum_category_id: number) => {
+        return Api().get(`index_category/${forum_category_id}`);
     },
     create_thread: (params: {
         title: string | undefined;
         content: string | undefined;
-        category: string | undefined;
+        forum_category_id: number | undefined;
     }) => {
         return Api().post("forum_threads", params);
     },
