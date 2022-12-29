@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ForumCategory } from "./Forum.types";
 
 const ForumCategoryItem: React.FC<{ url: string } & ForumCategory> = (
@@ -16,18 +16,18 @@ const ForumCategoryItem: React.FC<{ url: string } & ForumCategory> = (
                     />
                 </div>
                 <div className="col-span-2">
-                    <NavLink
+                    <Link
                         className="font-semibold text-lg"
-                        to={`/forum/${props.url}`}
+                        to={`${props.url}`}
+                        state={{ title: props.title, subtitle: props.subtitle }}
                     >
                         {props.title}
-                    </NavLink>
+                    </Link>
                     <p>{props.subtitle}</p>
                 </div>
             </div>
-            <div className="hidden lg:block col-span-2">{props.latest}</div>
+            <div className="hidden lg:block col-span-3">{props.latest}</div>
             <div className="hidden lg:block col-span-1">{props.threads}</div>
-            <div className="hidden lg:block col-span-1">{props.comments}</div>
         </div>
     );
 };
