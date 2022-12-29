@@ -15,7 +15,8 @@ const Subforum: React.FC = () => {
     useEffect(() => {
         dispatch(threadActions.removeAllThreads());
         const fetchThreads = async () => {
-            await threadServices.get_threads().then((res) => {
+            await threadServices.get_threads_from_cat(forumId).then((res) => {
+                console.log(res);
                 dispatch(threadActions.getAllThreads(res.data));
             });
         };
