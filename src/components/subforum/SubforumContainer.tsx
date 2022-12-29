@@ -6,17 +6,16 @@ import { formatUrl } from "../../helpers/helpers";
 import { useAppSelector } from "../../helpers/hooks";
 import { Link } from "react-router-dom";
 
-type Prop = { category: string };
+type Prop = { forumCategoryId: number };
 
 const SubforumContainer: React.FC<Prop> = (props: Prop) => {
-    const allThreads = useAppSelector((state) =>
-        state.threads.filter((thread) => thread.category === props.category).sort((a, b) => {
+    const allThreads = useAppSelector((state) => 
+        state.threads.filter((thread) => thread.forum_category_id === props.forumCategoryId).sort((a, b) => {
             const dateA = new Date(a.updated_at)
             const dateB = new Date(b.updated_at);
             return dateA > dateB ? -1 : 1;
         })
     );
-    console.log(allThreads);
     const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
 
     return (
@@ -25,7 +24,6 @@ const SubforumContainer: React.FC<Prop> = (props: Prop) => {
                 {isLoggedIn && <Link
                     to="new"
                     className="bg-blue-400 px-3 py-1"
-                    state={{ category: props.category }}
                 >
                     New Thread
                 </Link>}
@@ -43,7 +41,6 @@ const SubforumContainer: React.FC<Prop> = (props: Prop) => {
                         content={thread.content}
                         author={thread.username}
                         author_id={thread.user_id}
-                        category={thread.category}
                         created_at={thread.created_at}
                     />
                 ))}
