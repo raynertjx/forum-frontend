@@ -1,22 +1,24 @@
 import React, { useEffect } from "react";
-import { useAppDispatch } from "../helpers/hooks";
+import { useAppSelector, useAppDispatch } from "../helpers/hooks";
 import { threadActions } from "../store/thread-slice";
 import Title from "../components/UI/Title";
 import SubforumContainer from "../components/subforum/SubforumContainer";
-import { FORUM_CATEGORIES } from "../components/forum/Forum.constants";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { threadServices } from "../services/Services";
+import { spliceForumId } from "../helpers/helpers";
 
 const Subforum: React.FC = () => {
+    const location = useLocation();
     const { forumId } = useParams() as { forumId: string };
-    const forumCategory = FORUM_CATEGORIES[forumId];
+    const forumCategoryId = spliceForumId(forumId); 
+    const { title, subtitle } = location.state;
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(threadActions.removeAllThreads());
         const fetchThreads = async () => {
-            await threadServices.get_threads_from_cat(forumId).then((res) => {
-                console.log(res);
+            await threadServices.get_threads_from_cat(forumCategoryId).then((res) => {
+                console.log(res.data);
                 dispatch(threadActions.getAllThreads(res.data));
             });
         };
@@ -25,8 +27,8 @@ const Subforum: React.FC = () => {
 
     return (
         <>
-            <Title title={forumCategory.title} desc={forumCategory.subtitle} />
-            <SubforumContainer category={forumId}/>
+            <Title title={title} desc={subtitle} />
+            <SubforumContainer forumCategoryId={forumCategoryId} />
         </>
     );
 };
