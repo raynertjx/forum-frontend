@@ -11,6 +11,6 @@ export const formatUrl = (id: number, title: string) => {
     return id.toString() + "-" + formattedTitle;
 };
 
-export const spliceForumId = (id: string) => {
+export const spliceForumId = (id: string | undefined) => {
     return Number(id?.split('-')[0]);
 }
