@@ -10,3 +10,7 @@ export const formatUrl = (id: number, title: string) => {
     const formattedTitle = title.replace(/\s+/g, "-").toLowerCase();
     return id.toString() + "-" + formattedTitle;
 };
+
+export const spliceForumId = (id: string) => {
+    return Number(id?.split('-')[0]);
+}
