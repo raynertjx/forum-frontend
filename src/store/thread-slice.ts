@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface threadStateObj {
-    category: string;
-    content: string;
-    created_at: string;
     id: number;
     title: string;
-    updated_at: string;
+    content: string;
     user_id: number;
+    created_at: string;
+    updated_at: string;
     username: string;
+    forum_category_id: number;
 }
 
 const initialState: threadStateObj[] = [];
