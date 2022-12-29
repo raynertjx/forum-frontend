@@ -1,20 +1,20 @@
 import React from "react";
-import { FORUM_CATEGORIES } from "./Forum.constants";
 import ForumCategoryItem from "./ForumCategoryItem";
+import { useAppSelector } from "../../helpers/hooks";
 
 const ForumCategories: React.FC = () => {
+    const allCategories = useAppSelector((state) => state.categories);
     return (
         <div className="flex flex-col">
-            {Object.entries(FORUM_CATEGORIES).map(([key, value]) => (
+            {allCategories.map((category) => (
                 <ForumCategoryItem
-                    key={key}
-                    url={key}
-                    title={value.title}
-                    subtitle={value.subtitle}
-                    image={value.image}
-                    latest={value.latest}
-                    threads={value.threads}
-                    comments={value.comments}
+                    key={category.id}
+                    url={`${category.id}-${category.url}`}
+                    title={category.name}
+                    subtitle={category.subtitle}
+                    image={`/forum-images/${category.url}.jpeg`}
+                    latest={category.latest_thread}
+                    threads={category.thread_count}
                 />
             ))}
         </div>
