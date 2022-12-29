@@ -5,6 +5,5 @@ export type ThreadType = {
     content: string;
     author: string;
     author_id: number;
-    category: string;
     created_at: string;
 };
