@@ -10,8 +10,8 @@ import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import Subforum from "./routes/Subforum";
 import Thread from "./routes/Thread";
-import CreateThread from "./components/crud-forms/CreateThread";
-import UpdateThread from "./components/crud-forms/UpdateThread";
+import CreateThread from "./components/threads-crud/CreateThread";
+import UpdateThread from "./components/threads-crud/UpdateThread";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
