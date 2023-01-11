@@ -64,3 +64,28 @@ export const threadServices = {
         return Api().delete(`forum_threads/${thread_id}`);
     },
 };
+
+export const commentServices = {
+    get_comments_from_thread: (ForumThread_id: number) => {
+        return Api().get(`index_thread/${ForumThread_id}`);
+    },
+    create_comment: (params: {
+        content: string | undefined;
+        author: string | undefined;
+        user_id: number | undefined;
+        ForumThread_id: number | undefined;
+    }) => {
+        return Api().post("forum_comments", params);
+    },
+    update_comment: (params: {
+        content: string | undefined;
+        comment_id: string | undefined;
+    }) => {
+        const { comment_id, ...newParams } = params;
+        return Api().patch(`forum_comments/${comment_id}`, newParams);
+    },
+    delete_comment: (params: { comment_id: string | undefined }) => {
+        const { comment_id } = params;
+        return Api().delete(`forum_comments/${comment_id}`);
+    },
+};
