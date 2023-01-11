@@ -19,7 +19,7 @@ const commentSlice = createSlice({
         getAllComments(state, action) {
             return [...state, ...action.payload];
         },
-        removeAllThreads() {
+        removeAllComments() {
             return [];
         },
     },
