@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./auth-slice";
 import threadSlice from "./thread-slice";
 import categorySlice from "./category-slice";
+import commentSlice from "./comment-slice";
 
 export const store = configureStore({
     reducer: {
         auth: authSlice.reducer,
-        threads: threadSlice.reducer,
         categories: categorySlice.reducer,
+        threads: threadSlice.reducer,
+        comments: commentSlice.reducer,
     },
 });
 
