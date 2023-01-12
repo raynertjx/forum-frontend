@@ -9,7 +9,7 @@ type Prop = {
 const CommentForm: React.FC<Prop> = (props: Prop) => {
     return (
         <form onSubmit={props.formSubmitHandler}>
-            <label htmlFor="comment_content">Thread Title</label>
+            <label htmlFor="comment_content">Comment</label>
             <input
                 placeholder="Type your comment here!"
                 type="text"
