@@ -66,12 +66,12 @@ export const threadServices = {
 };
 
 export const commentServices = {
-    get_comments_from_thread: (ForumThread_id: number) => {
-        return Api().get(`index_thread/${ForumThread_id}`);
+    get_comments_from_thread: (forum_thread_id: number) => {
+        return Api().get(`index_thread/${forum_thread_id}`);
 },
     create_comment: (params: {
         content: string | undefined;
-        ForumThread_id: number | undefined;
+        forum_thread_id: number | undefined;
     }) => {
         return Api().post("forum_comments", params);
     },
