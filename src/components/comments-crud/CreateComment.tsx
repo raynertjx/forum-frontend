@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { commentServices } from "../../services/Services";
-import { useAppDispatch } from "../../helpers/hooks";
+import { useAppSelector, useAppDispatch } from "../../helpers/hooks";
 import { threadActions } from "../../store/thread-slice";
 import CommentForm from "./CommentForm";
 
@@ -10,12 +10,13 @@ type Prop = {
 };
 
 const CreateComment: React.FC<Prop> = (props: Prop) => {
+    const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const contentInput = useRef<HTMLInputElement | null>(null);
 
     const createCommentHandler = async (event: React.FormEvent) => {
-        event.preventDefault(); 
+        event.preventDefault();
         await commentServices
             .create_comment({
                 content: contentInput.current?.value,
@@ -32,11 +33,15 @@ const CreateComment: React.FC<Prop> = (props: Prop) => {
     };
 
     return (
-        <CommentForm
-            formSubmitHandler={createCommentHandler}
-            contentRef={contentInput}
-            contentValue={""}
-        />
+        <>
+            {isLoggedIn && (
+                <CommentForm
+                    formSubmitHandler={createCommentHandler}
+                    contentRef={contentInput}
+                    contentValue={""}
+                />
+            )}
+        </>
     );
 };
 
