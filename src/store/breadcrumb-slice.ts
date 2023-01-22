@@ -1,10 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface breadcrumbStateObj {
-    crumb: string;
-}
-
-const initialState: breadcrumbStateObj[] = [];
+const initialState: string[] = ["Home"];
 
 const breadcrumbSlice = createSlice({
     name: "breadcrumbs",
@@ -14,7 +10,7 @@ const breadcrumbSlice = createSlice({
             return [...state, ...action.payload];
         },
         removeAllCrumbs() {
-            return [];
+            return initialState;
         },
     },
 });
