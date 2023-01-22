@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { authServices } from "../../services/Services";
 import { useAppDispatch } from "../../helpers/hooks";
 import { useNavigate } from "react-router-dom";
+import Title from "../UI/Title";
 
 const SignupForm: React.FC = () => {
     const [loading, setLoading] = useState(false);
@@ -13,47 +14,69 @@ const SignupForm: React.FC = () => {
     const confirmPasswordInput = useRef<HTMLInputElement | null>(null);
     const formSubmitHandler = async (event: React.FormEvent) => {
         event.preventDefault();
-        await authServices.signup({
-            username: usernameInput.current?.value,
-            password: passwordInput.current?.value,
-            password_confirmation: confirmPasswordInput.current?.value,
-        })
+        try {
+            if (
+                passwordInput.current?.value !==
+                confirmPasswordInput.current?.value
+            ) {
+                throw new Error("Passwords should match");
+            }
+        } catch (error) {
+            alert("Passwords do not match!");
+        }
+        await authServices
+            .signup({
+                username: usernameInput.current?.value,
+                password: passwordInput.current?.value,
+                password_confirmation: confirmPasswordInput.current?.value,
+            })
             .then((res) => {
                 navigate("/login");
             })
             .catch((error) => {
+                alert("Username already exists!")
                 console.log(error);
             });
     };
 
     return (
-        <form onSubmit={formSubmitHandler}>
-            <label htmlFor="username">Username</label>
-            <input
-                type="text"
-                name="username"
-                id="username"
-                placeholder="Username"
-                ref={usernameInput}
-            />
-            <label htmlFor="password">Password</label>
-            <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Password"
-                ref={passwordInput}
-            />
-            <label htmlFor="password_confirmation">Confirm Password</label>
-            <input
-                type="password"
-                name="password_confirmation"
-                id="password_confirmation"
-                placeholder="Confirm Password"
-                ref={confirmPasswordInput}
-            />
-            <input type="submit" value="Submit" />
-        </form>
+        <div className="flex flex-col items-center">
+            <Title title={"Sign Up"} desc={"Be part of the Soccat Forum!"} />
+            <form
+                onSubmit={formSubmitHandler}
+                className="flex flex-col gap-4 w-4/12 mt-8"
+            >
+                <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Username"
+                    ref={usernameInput}
+                    className="border-2 rounded text-xl px-4 py-2"
+                />
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Password"
+                    ref={passwordInput}
+                    className="border-2 rounded text-xl px-4 py-2"
+                />
+                <input
+                    type="password"
+                    name="password_confirmation"
+                    id="password_confirmation"
+                    placeholder="Confirm Password"
+                    ref={confirmPasswordInput}
+                    className="border-2 rounded text-xl px-4 py-2"
+                />
+                <input
+                    type="submit"
+                    value="Sign Up"
+                    className="border-2 rounded px-4 py-2 bg-blue-400 text-xl font-medium"
+                />
+            </form>
+        </div>
     );
 };
 
