@@ -1,32 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../UI/Container";
 import Taskbar from "../UI/Taskbar";
 import ThreadItem from "./ThreadItem";
+import BreadcrumbNavBar from "../UI/BreadcrumbNavBar";
 import { formatUrl } from "../../helpers/helpers";
 import { useAppSelector } from "../../helpers/hooks";
 import { Link } from "react-router-dom";
 
-type Prop = { forumCategoryId: number };
+type Prop = { forumCategoryId: number; };
 
 const SubforumContainer: React.FC<Prop> = (props: Prop) => {
-    const allThreads = useAppSelector((state) => 
-        state.threads.filter((thread) => thread.forum_category_id === props.forumCategoryId).sort((a, b) => {
-            const dateA = new Date(a.updated_at)
-            const dateB = new Date(b.updated_at);
-            return dateA > dateB ? -1 : 1;
-        })
+    const allThreads = useAppSelector((state) =>
+        state.threads
+            .filter(
+                (thread) => thread.forum_category_id === props.forumCategoryId
+            )
+            .sort((a, b) => {
+                const dateA = new Date(a.updated_at);
+                const dateB = new Date(b.updated_at);
+                return dateA > dateB ? -1 : 1;
+            })
     );
     const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
 
     return (
         <Container>
-            <div className="bg-white flex justify-end pb-3">
-                {isLoggedIn && <Link
-                    to="new"
-                    className="bg-blue-400 px-3 py-1"
-                >
-                    New Thread
-                </Link>}
+            <div className="bg-white flex justify-between pb-3">
+                <BreadcrumbNavBar
+                />
+                {isLoggedIn && (
+                    <Link to="new" className="bg-blue-400 px-3 py-1">
+                        New Thread
+                    </Link>
+                )}
             </div>
             <Taskbar
                 headers={["Thread", "Latest Comment", "Comments", "Views"]}
