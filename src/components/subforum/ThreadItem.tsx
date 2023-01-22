@@ -17,6 +17,8 @@ const ThreadItem: React.FC<ThreadType> = (props: ThreadType) => {
                             user_id: props.author_id,
                             title: props.title,
                             content: props.content,
+                            author: props.author,
+                            created_at: props.created_at,
                         }}
                     >
                         {props.title}
