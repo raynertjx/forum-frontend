@@ -6,11 +6,16 @@ export const formatDate = (date: string) => {
     return month + " " + day + ", " + year;
 };
 
+export const formatDateWithTime = (date: string) => {
+    const dateObj = new Date(date);
+    return `${formatDate(date)}, ${dateObj.toLocaleTimeString('en-US')}`;
+};
+
 export const formatUrl = (id: number, title: string) => {
     const formattedTitle = title.replace(/\s+/g, "-").toLowerCase();
     return id.toString() + "-" + formattedTitle;
 };
 
 export const spliceForumId = (id: string | undefined) => {
-    return Number(id?.split('-')[0]);
-}
+    return Number(id?.split("-")[0]);
+};
