@@ -12,6 +12,9 @@ const breadcrumbSlice = createSlice({
         removeAllCrumbs() {
             return initialState;
         },
+        removeCrumbs() {
+            return initialState.slice(0, -1);
+        }
     },
 });
 
