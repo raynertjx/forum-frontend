@@ -11,7 +11,8 @@ export interface commentProps {
     commentContent: string;
     commentAuthor: string;
     commentDate: string;
-};
+    commentNo: number;
+}
 
 const CommentItem: React.FC<commentProps> = (props: commentProps) => {
     const commentProps = {
@@ -20,6 +21,7 @@ const CommentItem: React.FC<commentProps> = (props: commentProps) => {
         commentContent: props.commentContent,
         commentAuthor: props.commentAuthor,
         commentDate: props.commentDate,
+        commentNo: props.commentNo,
     };
 
     const [showEditForm, setshowEditForm] = useState(false);
