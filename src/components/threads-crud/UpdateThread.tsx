@@ -27,7 +27,7 @@ const UpdateThread: React.FC = () => {
             .then((res) => {
                 console.log(res);
                 // dispatch(threadActions.getAllThreads);
-                navigate(-2);
+                navigate(-1);
             })
             .catch((error) => {
                 console.log(error);
