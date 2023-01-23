@@ -9,7 +9,7 @@ const Layout: React.FC<Props> = (props) => {
     return (
         <>
             <Header />
-            <main className="mx-auto w-full max-w-5xl py-16">
+            <main className="mx-auto w-full max-w-4xl py-16">
                 {props.children}
             </main>
         </>
