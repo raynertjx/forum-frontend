@@ -35,7 +35,7 @@ const SubforumContainer: React.FC<Prop> = (props: Prop) => {
                 )}
             </div>
             <Taskbar
-                headers={["Thread", "Latest Comment", "Comments", "Views"]}
+                headers={["Thread", "Comments"]}
             />
             <div className="flex flex-col">
                 {allThreads.map((thread) => (
