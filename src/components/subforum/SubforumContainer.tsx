@@ -29,7 +29,7 @@ const SubforumContainer: React.FC<Prop> = (props: Prop) => {
                 <BreadcrumbNavBar
                 />
                 {isLoggedIn && (
-                    <Link to="new" className="bg-blue-400 px-3 py-1">
+                    <Link to="new" className="bg-blue-400 px-4 py-1 rounded font-medium transition hover:bg-blue-500">
                         New Thread
                     </Link>
                 )}
