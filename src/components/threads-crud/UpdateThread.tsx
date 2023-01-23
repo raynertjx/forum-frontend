@@ -13,7 +13,7 @@ const UpdateThread: React.FC = () => {
     const { forumId } = useParams();
     const { threadId } = useParams();
     const titleInput = useRef<HTMLInputElement | null>(null);
-    const contentInput = useRef<HTMLInputElement | null>(null);
+    const contentInput = useRef<HTMLTextAreaElement | null>(null);
 
     const updateThreadHandler = async (event: React.FormEvent) => {
         event.preventDefault();
