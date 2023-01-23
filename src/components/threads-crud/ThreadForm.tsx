@@ -58,7 +58,7 @@ const ThreadForm: React.FC<Prop> = (props: Prop) => {
                     <input
                         type="submit"
                         value="Submit"
-                        className="bg-blue-400 rounded py-1 px-4 font-medium"
+                        className="bg-blue-400 rounded py-1 px-4 font-medium transition hover:bg-blue-500"
                     />
                 </div>
             </form>
