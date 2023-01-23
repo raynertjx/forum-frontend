@@ -49,10 +49,10 @@ const Header: React.FC = () => {
                         </div>
                     </div>
                     <div className="hidden lg:flex  items-center space-x-1 font-medium">
-                        {isLoggedIn && <div>Welcome {username}</div>}
+                        {isLoggedIn && <span className="px-2">{username}</span>}
                         {!isLoggedIn && (
                             <NavLink
-                                className="py-5 px-1 text-gray-700 hover:text-gray-500"
+                                className="p-5 text-gray-700 hover:text-gray-500"
                                 to="/login"
                             >
                                 Login
@@ -60,14 +60,19 @@ const Header: React.FC = () => {
                         )}
                         {!isLoggedIn && (
                             <NavLink
-                                className="py-5 px-1 text-gray-700 hover:text-gray-500"
+                                className="p-5 text-gray-700 hover:text-gray-500"
                                 to="/signup"
                             >
                                 Sign Up
                             </NavLink>
                         )}
                         {isLoggedIn && (
-                            <button onClick={logoutHandler}>Log Out</button>
+                            <button
+                                onClick={logoutHandler}
+                                className="p-5 hover:text-gray-500"
+                            >
+                                Log Out
+                            </button>
                         )}
                     </div>
                     <div className="lg:hidden flex items-center">
