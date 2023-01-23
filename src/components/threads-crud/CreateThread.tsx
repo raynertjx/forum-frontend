@@ -12,7 +12,7 @@ const CreateThread: React.FC = () => {
     const { forumId } = useParams();
     const forumCategoryId = spliceForumId(forumId);
     const titleInput = useRef<HTMLInputElement | null>(null);
-    const contentInput = useRef<HTMLInputElement | null>(null);
+    const contentInput = useRef<HTMLTextAreaElement | null>(null);
     const [threadId, setThreadId] = useState(undefined);
 
     const createThread = async () => {

@@ -13,7 +13,7 @@ const CreateComment: React.FC<Prop> = (props: Prop) => {
     const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const contentInput = useRef<HTMLInputElement | null>(null);
+    const contentInput = useRef<HTMLTextAreaElement | null>(null);
 
     const createCommentHandler = async (event: React.FormEvent) => {
         event.preventDefault();
