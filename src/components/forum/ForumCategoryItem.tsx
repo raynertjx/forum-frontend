@@ -6,8 +6,8 @@ const ForumCategoryItem: React.FC<{ url: string } & ForumCategory> = (
     props
 ) => {
     return (
-        <div className="grid lg:grid-cols-10 px-4 py-4">
-            <div className="col-span-6 grid grid-cols-3 lg:flex gap-4">
+        <div className="grid lg:grid-cols-8 px-4 py-4">
+            <div className="col-span-7 grid grid-cols-3 lg:flex gap-4">
                 <div>
                     <img
                         className="object-scale-down h-20 w-30"
@@ -17,16 +17,15 @@ const ForumCategoryItem: React.FC<{ url: string } & ForumCategory> = (
                 </div>
                 <div className="col-span-2">
                     <Link
-                        className="font-semibold text-lg"
+                        className="font-semibold text-lg transition hover:text-gray-500"
                         to={`${props.url}`}
                         state={{ title: props.title, subtitle: props.subtitle }}
                     >
                         {props.title}
                     </Link>
-                    <p>{props.subtitle}</p>
+                    <p className="text-lg">{props.subtitle}</p>
                 </div>
             </div>
-            <div className="hidden lg:block col-span-3">{props.latest}</div>
             <div className="hidden lg:block col-span-1">{props.threads}</div>
         </div>
     );
