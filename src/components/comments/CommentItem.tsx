@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../helpers/hooks";
 import { commentServices } from "../../services/Services";
 import UpdateComment from "../comments-crud/UpdateComment";
+import CommentBox from "./CommentBox";
 
-type Prop = {
+export interface commentProps {
     commentId: number;
     commentUserId: number;
     commentContent: string;
@@ -12,7 +13,15 @@ type Prop = {
     commentDate: string;
 };
 
-const CommentItem: React.FC<Prop> = (props: Prop) => {
+const CommentItem: React.FC<commentProps> = (props: commentProps) => {
+    const commentProps = {
+        commentId: props.commentId,
+        commentUserId: props.commentUserId,
+        commentContent: props.commentContent,
+        commentAuthor: props.commentAuthor,
+        commentDate: props.commentDate,
+    };
+
     const [showEditForm, setshowEditForm] = useState(false);
     const currentUserId = useAppSelector((state) => state.auth.user_id);
     const navigate = useNavigate();
@@ -27,24 +36,7 @@ const CommentItem: React.FC<Prop> = (props: Prop) => {
             });
     };
 
-    return (
-        <div className="flex gap-4">
-            <div>
-                {props.commentContent}
-                {props.commentAuthor}
-                {props.commentDate}
-            </div>
-            {currentUserId === props.commentUserId && (
-                <div>
-                    {!showEditForm && <div>
-                        <button onClick={openEditForm}>Edit</button>
-                        <button onClick={deleteComment}>Delete</button>
-                    </div>}
-                    {showEditForm && <UpdateComment commentId={props.commentId} commentContent={props.commentContent} closeEditForm={closeEditForm}/>}
-                </div>
-            )}
-        </div>
-    );
+    return <CommentBox {...commentProps} />;
 };
 
 export default CommentItem;
