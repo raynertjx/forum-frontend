@@ -37,7 +37,9 @@ const CommentBox: React.FC<commentProps> = (props: commentProps) => {
                 />
             </div>
             <div className="p-4 row-span-4 col-span-5">
-                <p className="break-words">{props.commentContent}</p>
+                {!showEditForm && (
+                    <p className="break-words">{props.commentContent}</p>
+                )}
                 {currentUserId === props.commentUserId && showEditForm && (
                     <UpdateComment
                         commentId={props.commentId}
@@ -50,12 +52,18 @@ const CommentBox: React.FC<commentProps> = (props: commentProps) => {
                 {currentUserId === props.commentUserId && (
                     <div>
                         {!showEditForm && (
-                            <div className="flex gap-2 pr-2 ">
+                            <div className="flex gap-2 pr-2">
                                 <button onClick={openEditForm}>
-                                    <AiOutlineEdit size={20} className="transition hover:text-gray-500"/>
+                                    <AiOutlineEdit
+                                        size={20}
+                                        className="transition hover:text-gray-500"
+                                    />
                                 </button>
                                 <button onClick={deleteComment}>
-                                    <AiOutlineDelete size={20} className="transition hover:text-gray-500"/>
+                                    <AiOutlineDelete
+                                        size={20}
+                                        className="transition hover:text-gray-500"
+                                    />
                                 </button>
                             </div>
                         )}

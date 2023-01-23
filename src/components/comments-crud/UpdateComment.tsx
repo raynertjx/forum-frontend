@@ -14,7 +14,7 @@ type Prop = {
 const UpdateComment: React.FC<Prop> = (props: Prop) => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const contentInput = useRef<HTMLInputElement | null>(null);
+    const contentInput = useRef<HTMLTextAreaElement | null>(null);
 
     const updateCommentHandler = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -39,8 +39,10 @@ const UpdateComment: React.FC<Prop> = (props: Prop) => {
                 formSubmitHandler={updateCommentHandler}
                 contentRef={contentInput}
                 contentValue={props.commentContent}
+                textAreaSize={24}
+                closeEditForm={props.closeEditForm}
+                edit={true}
             />
-            <button onClick={props.closeEditForm}>Cancel</button>
         </>
     );
 };

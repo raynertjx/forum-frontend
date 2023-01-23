@@ -39,6 +39,7 @@ const CreateComment: React.FC<Prop> = (props: Prop) => {
                     formSubmitHandler={createCommentHandler}
                     contentRef={contentInput}
                     contentValue={""}
+                    textAreaSize={40}
                 />
             )}
         </>
