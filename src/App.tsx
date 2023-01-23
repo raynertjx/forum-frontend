@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { authServices } from "./services/Services";
 import { useAppDispatch } from "./helpers/hooks";
@@ -16,6 +16,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCookie = async () => {
@@ -32,6 +33,8 @@ function App() {
                 })
                 .catch((error) => {
                     dispatch(authActions.logout());
+                    alert("Your sesson has expired. Please log in again.");
+                    navigate("/login");
                     return error;
                 });
         };
