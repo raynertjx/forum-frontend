@@ -6,7 +6,6 @@ import SubforumContainer from "../components/subforum/SubforumContainer";
 import { useParams, useLocation } from "react-router-dom";
 import { threadServices } from "../services/Services";
 import { spliceForumId } from "../helpers/helpers";
-import { breadcrumbActions } from "../store/breadcrumb-slice";
 
 const Subforum: React.FC = () => {
     const location = useLocation();
@@ -17,8 +16,6 @@ const Subforum: React.FC = () => {
 
     useEffect(() => {
         dispatch(threadActions.removeAllThreads());
-        dispatch(breadcrumbActions.removeAllCrumbs());
-        dispatch(breadcrumbActions.getAllCrumbs(title));
         const fetchThreads = async () => {
             await threadServices
                 .get_threads_from_cat(forumCategoryId)
@@ -29,11 +26,15 @@ const Subforum: React.FC = () => {
         };
         fetchThreads();
     }, []);
+    console.log(title);
 
     return (
         <>
             <Title title={title} desc={subtitle} />
-            <SubforumContainer forumCategoryId={forumCategoryId} />
+            <SubforumContainer
+                forumCategoryId={forumCategoryId}
+                forumCategoryTitle={title}
+             />
         </>
     );
 };

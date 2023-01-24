@@ -7,7 +7,7 @@ import { formatUrl } from "../../helpers/helpers";
 import { useAppSelector } from "../../helpers/hooks";
 import { Link } from "react-router-dom";
 
-type Prop = { forumCategoryId: number; };
+type Prop = { forumCategoryId: number; forumCategoryTitle: string;};
 
 const SubforumContainer: React.FC<Prop> = (props: Prop) => {
     const allThreads = useAppSelector((state) =>
@@ -26,17 +26,17 @@ const SubforumContainer: React.FC<Prop> = (props: Prop) => {
     return (
         <Container>
             <div className="bg-white flex justify-between pb-3">
-                <BreadcrumbNavBar
-                />
+                <BreadcrumbNavBar crumbArr={[{title: props.forumCategoryTitle, nav: 0}]} />
                 {isLoggedIn && (
-                    <Link to="new" className="bg-blue-400 px-4 py-1 rounded font-medium transition hover:bg-blue-500">
+                    <Link
+                        to="new"
+                        className="bg-blue-400 px-4 py-1 rounded font-medium transition hover:bg-blue-500"
+                    >
                         New Thread
                     </Link>
                 )}
             </div>
-            <Taskbar
-                headers={["Thread", "Comments"]}
-            />
+            <Taskbar headers={["Thread", "Comments"]} />
             <div className="flex flex-col">
                 {allThreads.map((thread) => (
                     <ThreadItem
