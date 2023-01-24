@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { categoryServices, threadServices } from "../../services/Services";
-import { useAppDispatch } from "../../helpers/hooks";
+import { threadServices } from "../../services/Services";
+import { useAppDispatch, useAppSelector } from "../../helpers/hooks";
 import { threadActions } from "../../store/thread-slice";
 import { spliceForumId } from "../../helpers/helpers";
 import ThreadForm from "./ThreadForm";
@@ -13,9 +13,10 @@ const CreateThread: React.FC = () => {
     const forumCategoryId = spliceForumId(forumId);
     const titleInput = useRef<HTMLInputElement | null>(null);
     const contentInput = useRef<HTMLTextAreaElement | null>(null);
-    const [threadId, setThreadId] = useState(undefined);
 
-    const createThread = async () => {
+
+    const createThread = async (event: React.FormEvent) => {
+        event.preventDefault();
         await threadServices
             .create_thread({
                 title: titleInput.current?.value,
@@ -24,7 +25,6 @@ const CreateThread: React.FC = () => {
             })
             .then((res) => {
                 console.log(res.data.id);
-                setThreadId(res.data.id);
                 dispatch(threadActions.getAllThreads);
                 navigate(-1);
             })
@@ -33,31 +33,9 @@ const CreateThread: React.FC = () => {
             });
     };
 
-    const updateCategory = async () => {
-        await categoryServices
-            .update_category({
-                id: forumCategoryId,
-                latest_thread: threadId,
-                thread_count: 1,
-            })
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
-    const createThreadHandler = async (event: React.FormEvent) => {
-        event.preventDefault();
-        await Promise.all([createThread(), updateCategory()])
-            .then((res) => console.log(res))
-            .catch((error) => error);
-    };
-
     return (
         <ThreadForm
-            formSubmitHandler={createThreadHandler}
+            formSubmitHandler={createThread}
             titleRef={titleInput}
             contentRef={contentInput}
             titleValue={""}
