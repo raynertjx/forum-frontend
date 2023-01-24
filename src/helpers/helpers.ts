@@ -8,7 +8,7 @@ export const formatDate = (date: string) => {
 
 export const formatDateWithTime = (date: string) => {
     const dateObj = new Date(date);
-    return `${formatDate(date)}, ${dateObj.toLocaleTimeString('en-US')}`;
+    return `${formatDate(date)}, ${dateObj.toLocaleTimeString("en-US")}`;
 };
 
 export const formatUrl = (id: number, title: string) => {
@@ -19,3 +19,9 @@ export const formatUrl = (id: number, title: string) => {
 export const spliceForumId = (id: string | undefined) => {
     return Number(id?.split("-")[0]);
 };
+
+export const spliceForumTitle = (id: string | undefined) => {
+    const firstStr = id!.split("-")[1]
+    const secondStr = id!.split("-")[2]; 
+    return firstStr.charAt(0).toUpperCase() + firstStr.slice(1) + " " + secondStr.charAt(0).toUpperCase() + secondStr.slice(1);
+}
