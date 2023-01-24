@@ -3,7 +3,6 @@ import authSlice from "./auth-slice";
 import threadSlice from "./thread-slice";
 import categorySlice from "./category-slice";
 import commentSlice from "./comment-slice";
-import breadcrumbSlice from "./breadcrumb-slice";
 
 export const store = configureStore({
     reducer: {
@@ -11,7 +10,6 @@ export const store = configureStore({
         categories: categorySlice.reducer,
         threads: threadSlice.reducer,
         comments: commentSlice.reducer,
-        breadcrumbs: breadcrumbSlice.reducer,
     },
 });
 
