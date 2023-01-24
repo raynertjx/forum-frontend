@@ -21,7 +21,13 @@ export const spliceForumId = (id: string | undefined) => {
 };
 
 export const spliceForumTitle = (id: string | undefined) => {
-    const firstStr = id!.split("-")[1]
-    const secondStr = id!.split("-")[2]; 
-    return firstStr.charAt(0).toUpperCase() + firstStr.slice(1) + " " + secondStr.charAt(0).toUpperCase() + secondStr.slice(1);
-}
+    const firstStr = id!.split("-")[1];
+    const secondStr = id!.split("-")[2];
+    return (
+        firstStr.charAt(0).toUpperCase() +
+        firstStr.slice(1) +
+        " " +
+        secondStr.charAt(0).toUpperCase() +
+        secondStr.slice(1)
+    );
+};

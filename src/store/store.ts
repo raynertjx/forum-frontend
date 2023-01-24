@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import authSlice from "./auth-slice";
-import threadSlice from "./thread-slice";
 import categorySlice from "./category-slice";
 import commentSlice from "./comment-slice";
+import threadSlice from "./thread-slice";
 
 export const store = configureStore({
     reducer: {

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+
 import { formatDateWithTime } from "../../helpers/helpers";
-import UpdateComment from "../comments-crud/UpdateComment";
-import { commentServices } from "../../services/Services";
 import { useAppSelector } from "../../helpers/hooks";
+import { commentServices } from "../../services/Services";
+import UpdateComment from "../comments-crud/UpdateComment";
 import { commentProps } from "./CommentItem";
 
 const CommentBox: React.FC<commentProps> = (props: commentProps) => {

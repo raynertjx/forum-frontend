@@ -1,12 +1,10 @@
 import React, { useRef } from "react";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+
 import { threadServices } from "../../services/Services";
-import { useAppDispatch } from "../../helpers/hooks";
-import { threadActions } from "../../store/thread-slice";
 import ThreadForm from "./ThreadForm";
 
 const UpdateThread: React.FC = () => {
-    // const dispatch = useAppDispatch();
     const location = useLocation();
     const { title, content } = location.state;
     const navigate = useNavigate();
@@ -26,7 +24,6 @@ const UpdateThread: React.FC = () => {
             })
             .then((res) => {
                 console.log(res);
-                // dispatch(threadActions.getAllThreads);
                 navigate(-1);
             })
             .catch((error) => {

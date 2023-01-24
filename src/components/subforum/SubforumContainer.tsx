@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+
+import { formatUrl } from "../../helpers/helpers";
+import { useAppSelector } from "../../helpers/hooks";
+import BreadcrumbNavBar from "../UI/BreadcrumbNavBar";
 import Container from "../UI/Container";
 import Taskbar from "../UI/Taskbar";
 import ThreadItem from "./ThreadItem";
-import BreadcrumbNavBar from "../UI/BreadcrumbNavBar";
-import { formatUrl } from "../../helpers/helpers";
-import { useAppSelector } from "../../helpers/hooks";
-import { Link } from "react-router-dom";
 
-type Prop = { forumCategoryId: number; forumCategoryTitle: string;};
+type Prop = { forumCategoryId: number; forumCategoryTitle: string };
 
 const SubforumContainer: React.FC<Prop> = (props: Prop) => {
     const allThreads = useAppSelector((state) =>
@@ -26,7 +27,9 @@ const SubforumContainer: React.FC<Prop> = (props: Prop) => {
     return (
         <Container>
             <div className="bg-white flex justify-between pb-3">
-                <BreadcrumbNavBar crumbArr={[{title: props.forumCategoryTitle, nav: 0}]} />
+                <BreadcrumbNavBar
+                    crumbArr={[{ title: props.forumCategoryTitle, nav: 0 }]}
+                />
                 {isLoggedIn && (
                     <Link
                         to="new"

@@ -1,8 +1,4 @@
-import React, { useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { threadServices } from "../../services/Services";
-import { useAppDispatch } from "../../helpers/hooks";
-import { threadActions } from "../../store/thread-slice";
+import React from "react";
 
 type Prop = {
     formSubmitHandler: (event: React.FormEvent) => {};

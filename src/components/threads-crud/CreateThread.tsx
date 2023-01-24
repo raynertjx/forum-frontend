@@ -1,9 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { threadServices } from "../../services/Services";
-import { useAppDispatch, useAppSelector } from "../../helpers/hooks";
-import { threadActions } from "../../store/thread-slice";
+
 import { spliceForumId } from "../../helpers/helpers";
+import { useAppDispatch } from "../../helpers/hooks";
+import { threadServices } from "../../services/Services";
+import { threadActions } from "../../store/thread-slice";
 import ThreadForm from "./ThreadForm";
 
 const CreateThread: React.FC = () => {
@@ -13,7 +14,6 @@ const CreateThread: React.FC = () => {
     const forumCategoryId = spliceForumId(forumId);
     const titleInput = useRef<HTMLInputElement | null>(null);
     const contentInput = useRef<HTMLTextAreaElement | null>(null);
-
 
     const createThread = async (event: React.FormEvent) => {
         event.preventDefault();

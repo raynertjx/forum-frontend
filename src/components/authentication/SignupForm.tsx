@@ -1,13 +1,10 @@
-import React, { useState, useRef } from "react";
-import { authServices } from "../../services/Services";
-import { useAppDispatch } from "../../helpers/hooks";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { authServices } from "../../services/Services";
 import Title from "../UI/Title";
 
 const SignupForm: React.FC = () => {
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const usernameInput = useRef<HTMLInputElement | null>(null);
     const passwordInput = useRef<HTMLInputElement | null>(null);
@@ -34,7 +31,7 @@ const SignupForm: React.FC = () => {
                 navigate("/login");
             })
             .catch((error) => {
-                alert("Username already exists!")
+                alert("Username already exists!");
                 console.log(error);
             });
     };

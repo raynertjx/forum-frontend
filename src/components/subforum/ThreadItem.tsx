@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ThreadType } from "./Thread.types";
+
 import { formatDate } from "../../helpers/helpers";
+import { ThreadType } from "./Thread.types";
 
 const ThreadItem: React.FC<ThreadType> = (props: ThreadType) => {
     return (

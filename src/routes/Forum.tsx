@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import ForumContainer from "../components/forum/ForumContainer";
+
 import Title from "../components/UI/Title";
+import ForumContainer from "../components/forum/ForumContainer";
 import { useAppDispatch } from "../helpers/hooks";
-import { threadActions } from "../store/thread-slice";
-import { categoryServices, threadServices } from "../services/Services";
+import { categoryServices } from "../services/Services";
 import { categoryActions } from "../store/category-slice";
 
 const Forum: React.FC = () => {

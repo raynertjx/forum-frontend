@@ -68,7 +68,7 @@ export const threadServices = {
 export const commentServices = {
     get_comments_from_thread: (forum_thread_id: number) => {
         return Api().get(`index_thread/${forum_thread_id}`);
-},
+    },
     create_comment: (params: {
         content: string | undefined;
         forum_thread_id: number | undefined;

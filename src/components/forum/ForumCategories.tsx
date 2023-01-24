@@ -1,6 +1,7 @@
 import React from "react";
-import ForumCategoryItem from "./ForumCategoryItem";
+
 import { useAppSelector } from "../../helpers/hooks";
+import ForumCategoryItem from "./ForumCategoryItem";
 
 const ForumCategories: React.FC = () => {
     const allCategories = useAppSelector((state) => state.categories);

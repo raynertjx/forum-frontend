@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "../helpers/hooks";
-import { threadActions } from "../store/thread-slice";
+import { useLocation, useParams } from "react-router-dom";
+
 import Title from "../components/UI/Title";
 import SubforumContainer from "../components/subforum/SubforumContainer";
-import { useParams, useLocation } from "react-router-dom";
-import { threadServices } from "../services/Services";
 import { spliceForumId } from "../helpers/helpers";
+import { useAppDispatch } from "../helpers/hooks";
+import { threadServices } from "../services/Services";
+import { threadActions } from "../store/thread-slice";
 
 const Subforum: React.FC = () => {
     const location = useLocation();
@@ -34,7 +35,7 @@ const Subforum: React.FC = () => {
             <SubforumContainer
                 forumCategoryId={forumCategoryId}
                 forumCategoryTitle={title}
-             />
+            />
         </>
     );
 };

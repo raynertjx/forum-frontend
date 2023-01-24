@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
-import { formatDateWithTime, spliceForumTitle } from "../helpers/helpers";
-import { useAppSelector, useAppDispatch } from "../helpers/hooks";
-import { useNavigate, useLocation, useParams, Link } from "react-router-dom";
-import { spliceForumId } from "../helpers/helpers";
-import { commentActions } from "../store/comment-slice";
-import {
-    threadServices,
-    commentServices,
-    categoryServices,
-} from "../services/Services";
-import CommentsList from "../components/comments/CommentsList";
-import CreateComment from "../components/comments-crud/CreateComment";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+
 import BreadcrumbNavBar from "../components/UI/BreadcrumbNavBar";
+import CreateComment from "../components/comments-crud/CreateComment";
+import CommentsList from "../components/comments/CommentsList";
+import { formatDateWithTime, spliceForumTitle } from "../helpers/helpers";
+import { spliceForumId } from "../helpers/helpers";
+import { useAppDispatch, useAppSelector } from "../helpers/hooks";
+import { commentServices, threadServices } from "../services/Services";
+import { commentActions } from "../store/comment-slice";
 
 const Thread: React.FC = () => {
     const dispatch = useAppDispatch();

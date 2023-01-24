@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
-import { authActions } from "../../store/auth-slice";
+import React, { useState } from "react";
 import { IoLogoOctocat } from "react-icons/io";
+import { NavLink, useNavigate } from "react-router-dom";
+
 import { useAppDispatch } from "../../helpers/hooks";
 import { useAppSelector } from "../../helpers/hooks";
 import { authServices } from "../../services/Services";
+import { authActions } from "../../store/auth-slice";
 
 const Header: React.FC = () => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);

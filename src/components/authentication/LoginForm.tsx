@@ -1,13 +1,12 @@
-import React, { useState, useRef } from "react";
-import { authServices } from "../../services/Services";
-import { useAppDispatch } from "../../helpers/hooks";
-import { authActions } from "../../store/auth-slice";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { useAppDispatch } from "../../helpers/hooks";
+import { authServices } from "../../services/Services";
+import { authActions } from "../../store/auth-slice";
 import Title from "../UI/Title";
 
 const LoginForm: React.FC = () => {
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const passwordInput = useRef<HTMLInputElement | null>(null);

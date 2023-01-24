@@ -1,18 +1,19 @@
-import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { authServices } from "./services/Services";
-import { useAppDispatch } from "./helpers/hooks";
-import { authActions } from "./store/auth-slice";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+
 import Layout from "./components/layout/Layout";
+import CreateThread from "./components/threads-crud/CreateThread";
+import UpdateThread from "./components/threads-crud/UpdateThread";
+import { useAppDispatch } from "./helpers/hooks";
 import About from "./routes/About";
 import Forum from "./routes/Forum";
 import Login from "./routes/Login";
+import ProtectedRoute from "./routes/ProtectedRoute";
 import Signup from "./routes/Signup";
 import Subforum from "./routes/Subforum";
 import Thread from "./routes/Thread";
-import CreateThread from "./components/threads-crud/CreateThread";
-import UpdateThread from "./components/threads-crud/UpdateThread";
-import ProtectedRoute from "./routes/ProtectedRoute";
+import { authServices } from "./services/Services";
+import { authActions } from "./store/auth-slice";
 
 function App() {
     const dispatch = useAppDispatch();
