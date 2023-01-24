@@ -6,7 +6,7 @@ import { formatDate } from "../../helpers/helpers";
 const ThreadItem: React.FC<ThreadType> = (props: ThreadType) => {
     return (
         <div className="grid lg:grid-cols-8 px-2 py-4">
-            <div className="col-span-7 grid grid-cols-3 lg:flex gap-4">
+            <div className="col-span-8 grid grid-cols-3 lg:flex gap-4">
                 <div></div>
                 <div className="col-span-2">
                     <Link
@@ -29,7 +29,6 @@ const ThreadItem: React.FC<ThreadType> = (props: ThreadType) => {
                     </div>
                 </div>
             </div>
-            <div className="hidden lg:block col-span-1">100</div>
         </div>
     );
 };

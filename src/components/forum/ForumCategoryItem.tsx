@@ -26,7 +26,6 @@ const ForumCategoryItem: React.FC<{ url: string } & ForumCategory> = (
                     <p className="text-lg">{props.subtitle}</p>
                 </div>
             </div>
-            <div className="hidden lg:block col-span-1">{props.threads}</div>
         </div>
     );
 };
