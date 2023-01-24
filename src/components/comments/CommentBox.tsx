@@ -15,12 +15,14 @@ const CommentBox: React.FC<commentProps> = (props: commentProps) => {
     const openEditForm = () => setshowEditForm(true);
     const closeEditForm = () => setshowEditForm(false);
     const deleteComment = async () => {
-        await commentServices
-            .delete_comment({ comment_id: props.commentId.toString() })
-            .then((res) => {
-                console.log(res);
-                navigate(0);
-            });
+        if (confirm("Do you want to delete this comment?")) {
+            await commentServices
+                .delete_comment({ comment_id: props.commentId.toString() })
+                .then((res) => {
+                    console.log(res);
+                    navigate(0);
+                });
+        }
     };
     return (
         <div className="border-2 h-48 grid grid-rows-6 grid-cols-6">

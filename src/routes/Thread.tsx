@@ -35,10 +35,12 @@ const Thread: React.FC = () => {
     }, []);
 
     const deleteThread = async () => {
-        await threadServices.delete_thread({ thread_id }).then((res) => {
-            console.log(res);
-            navigate(-1);
-        });
+        if (confirm("Do you want to delete this thread?")) {
+            await threadServices.delete_thread({ thread_id }).then((res) => {
+                console.log(res);
+                navigate(-1);
+            });
+        }
     };
 
     return (
