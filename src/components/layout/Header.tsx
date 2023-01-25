@@ -18,6 +18,7 @@ const Header: React.FC = () => {
     const logoutHandler = async (event: React.MouseEvent) => {
         await authServices.logout().then((res) => {
             dispatch(authActions.logout());
+            localStorage.removeItem("token");
             navigate("/forum");
         });
     };

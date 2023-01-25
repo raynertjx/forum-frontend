@@ -20,6 +20,7 @@ const LoginForm: React.FC = () => {
             })
             .then((res) => {
                 const data = res.data.user;
+                localStorage.setItem("token", res.data.token);
                 dispatch(
                     authActions.login({
                         user_id: data.id,

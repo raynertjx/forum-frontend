@@ -28,6 +28,7 @@ const SignupForm: React.FC = () => {
                 password_confirmation: confirmPasswordInput.current?.value,
             })
             .then((res) => {
+                localStorage.setItem("token", res.data.token);
                 navigate("/login");
             })
             .catch((error) => {
