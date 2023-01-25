@@ -23,6 +23,7 @@ const Thread: React.FC = () => {
     const categoryTitle = spliceForumTitle(forumId);
 
     useEffect(() => {
+        dispatch(commentActions.removeAllComments());
         const fetchThreads = async () => {
             await commentServices
                 .get_comments_from_thread(thread_id)
