@@ -2,7 +2,7 @@ import axios from "axios";
 import.meta.env.MODE
 
 const Api = () => {
-    const api_url: string = "https://forum-api-n6ma.onrender.com";
+    const api_url: string = "https://forum-backend-eog7.onrender.com";
     const instance = axios.create({
         withCredentials: true,
         baseURL: api_url,
