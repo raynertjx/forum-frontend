@@ -24,7 +24,7 @@ const UpdateThread: React.FC = () => {
             })
             .then((res) => {
                 console.log(res);
-                navigate(-1);
+                navigate(-2);
             })
             .catch((error) => {
                 console.log(error);
